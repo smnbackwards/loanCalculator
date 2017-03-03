@@ -2,6 +2,7 @@
 
 import datetime
 
+
 # http://www.studentloanrepayment.co.uk/portal/page?_pageid=93,6678755&_dad=portal&_schema=PORTAL
 INTEREST_RATES = [
   { "from": datetime.date(2012,  9,  1), "to": datetime.date(2013, 8, 31), "value": .03 + .036 },
@@ -10,6 +11,7 @@ INTEREST_RATES = [
   { "from": datetime.date(2015,  9,  1), "to": datetime.date(2016, 8, 31), "value": .03 + .009 },
   { "from": datetime.date(2016,  9,  1), "to": datetime.date(2017, 8, 31), "value": .03 + .016 },
 ]
+
 
 LOANS = [
   # Year 1
@@ -33,13 +35,16 @@ LOANS = [
   { "date": datetime.date(2016,  6,  8), "value": 4500. },
 ]
 
+
 # Notified this is the amount I owe
 CHECKSUMS = [
   { "date": datetime.date(2017,  2, 28), "value": 40606.03 },
 ]
 
+
 PAYMENTS = [
 ]
+
 
 START_DATE = datetime.date(2012, 9, 1)
 END_DATE = datetime.date.today()
@@ -76,8 +81,10 @@ def addPrincipalForDay(day):
       return loan['value']
   return 0
 
+
 def addInterestForPrincipal(principal, day):
   return getDailyInterestRate(day) * principal
+
 
 def main():
   principalAccumulator = 0.0
@@ -101,4 +108,3 @@ def main():
 
 if __name__ == "__main__":
   main()
-
