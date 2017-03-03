@@ -10,6 +10,9 @@ INTEREST_RATES = [
   { "from": datetime.date(2014,  9,  1), "to": datetime.date(2015, 8, 31), "value": .03 + .025 },
   { "from": datetime.date(2015,  9,  1), "to": datetime.date(2016, 8, 31), "value": .03 + .009 },
   { "from": datetime.date(2016,  9,  1), "to": datetime.date(2017, 8, 31), "value": .03 + .016 },
+
+  # We assume things don't change much to make projections
+  { "from": datetime.date(2017,  9,  1), "to": datetime.date(2050, 8, 31), "value": .03 + .016 },
 ]
 
 
@@ -75,6 +78,9 @@ def getDailyInterestRate(day):
   return fetchInterestRate(day) / daysInYearForDate(day)
 
 
+def isEndOfCompoundingPeriod(day):
+  return False
+
 def addPrincipalForDay(day):
   for loan in LOANS:
     if loan['date'] == day:
@@ -87,23 +93,30 @@ def addInterestForPrincipal(principal, day):
 
 
 def main():
-  principalAccumulator = 0.0
-  interestAccumulator = 0.0
-  yesterday = 0.0
+  principal      = 0.0
+  closedInterest = 0.0 # Compounds
+  openInterest   = 0.0 # Does not compound yet
+  previousClose  = 0.0
 
   for day in daterange(START_DATE, END_DATE):
-    principalAccumulator += addPrincipalForDay(day)
-    interestAccumulator += addInterestForPrincipal(principalAccumulator, day)
+    principal += addPrincipalForDay(day)
+    openInterest += addInterestForPrincipal(principal + closedInterest, day)
+
+    if isEndOfCompoundingPeriod(day):
+      closedInterest += openInterest
+      openInterest = 0
+
+    closingBalance = principal + closedInterest + openInterest
 
     print("{} | {:>8.2f} | {:>8.2f} | {:>8.2f} | {:>3.2f}".format(
       day,
-      principalAccumulator,
-      interestAccumulator,
-      principalAccumulator + interestAccumulator,
-      principalAccumulator + interestAccumulator - yesterday,
+      principal,
+      closedInterest + openInterest,
+      closingBalance,
+      closingBalance - previousClose,
     ))
 
-    yesterday = principalAccumulator + interestAccumulator
+    previousClose = closingBalance
 
 
 if __name__ == "__main__":
