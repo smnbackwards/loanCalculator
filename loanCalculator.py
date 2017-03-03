@@ -18,7 +18,7 @@ INTEREST_RATES = [
 
 LOANS = [
   # Year 1
-  { "date": datetime.date(2012, 10, 17), "value": 2250. },
+  { "date": datetime.date(2012, 11, 7), "value": 2250. },
   { "date": datetime.date(2013,  2,  6), "value": 2250. },
   { "date": datetime.date(2013,  5,  1), "value": 4500. },
 
@@ -29,19 +29,19 @@ LOANS = [
 
   # Year 3 - Non standard second payment due to change of status to 4YF
   { "date": datetime.date(2014, 10, 15), "value": 2250. },
-  { "date": datetime.date(2015,  3, 18), "value": 2250. },
+  { "date": datetime.date(2015,  2, 4), "value": 2250. },
   { "date": datetime.date(2015,  5,  6), "value": 4500. },
 
   # Year 4 - I screwed up the documents so the money got in late
-  { "date": datetime.date(2016,  5, 25), "value": 2250. },
-  { "date": datetime.date(2016,  6,  1), "value": 2250. },
-  { "date": datetime.date(2016,  6,  8), "value": 4500. },
+  { "date": datetime.date(2016,  10, 21), "value": 2250. },
+  { "date": datetime.date(2016,  2,  3), "value": 2250. },
+  { "date": datetime.date(2016,  5,  4), "value": 4500. },
 ]
 
 
 # Notified this is the amount I owe
 CHECKSUMS = [
-  { "date": datetime.date(2017,  2, 28), "value": 40606.03 },
+  { "date": datetime.date(2016,  5, 31), "value": 39333.68 },
 ]
 
 
