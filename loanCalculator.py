@@ -79,7 +79,7 @@ def getDailyInterestRate(day):
 
 
 def isEndOfCompoundingPeriod(day):
-  return day.month == 1 and day.day == 1
+  return day.day == 1
 
 
 def addPrincipalForDay(day):
