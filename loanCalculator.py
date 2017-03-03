@@ -14,23 +14,23 @@ INTEREST_RATES = [
 LOANS = [
   # Year 1
   { "date": datetime.date(2012, 10, 17), "value": 2250. },
-  { "date": datetime.date(2013, 02, 06), "value": 2250. },
-  { "date": datetime.date(2013, 05, 01), "value": 4500. },
+  { "date": datetime.date(2013,  2,  6), "value": 2250. },
+  { "date": datetime.date(2013,  5,  1), "value": 4500. },
 
   # Year 2
   { "date": datetime.date(2013, 10, 16), "value": 2250. },
-  { "date": datetime.date(2014, 02, 05), "value": 2250. },
-  { "date": datetime.date(2014, 05, 07), "value": 4500. },
+  { "date": datetime.date(2014,  2,  5), "value": 2250. },
+  { "date": datetime.date(2014,  5,  7), "value": 4500. },
 
   # Year 3 - Non standard second payment due to change of status to 4YF
   { "date": datetime.date(2014, 10, 15), "value": 2250. },
-  { "date": datetime.date(2015, 03, 18), "value": 2250. },
-  { "date": datetime.date(2015, 05, 06), "value": 4500. },
+  { "date": datetime.date(2015,  3, 18), "value": 2250. },
+  { "date": datetime.date(2015,  5,  6), "value": 4500. },
 
   # Year 4 - I screwed up the documents so the money got in late
-  { "date": datetime.date(2016, 05, 25), "value": 2250. },
-  { "date": datetime.date(2016, 06, 01), "value": 2250. },
-  { "date": datetime.date(2016, 06,  8), "value": 4500. },
+  { "date": datetime.date(2016,  5, 25), "value": 2250. },
+  { "date": datetime.date(2016,  6,  1), "value": 2250. },
+  { "date": datetime.date(2016,  6,  8), "value": 4500. },
 ]
 
 # Notified this is the amount I owe
