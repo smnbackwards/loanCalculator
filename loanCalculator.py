@@ -70,27 +70,28 @@ def fetchInterestRate(day):
   raise "Could not find day " + day
 
 
-def daysInYearForDate(date):
-  return (datetime.date(date.year, 12, 31) - datetime.date(date.year, 1, 1)).days + 1
-
-
-def getDailyInterestRate(day):
-  return fetchInterestRate(day) / daysInYearForDate(day)
-
-
-def isEndOfCompoundingPeriod(day):
-  return day.day == 1
-
-
-def addPrincipalForDay(day):
+def fetchPrincipalForDay(day):
   for loan in LOANS:
     if loan['date'] == day:
       return loan['value']
   return 0
 
 
-def addInterestForPrincipal(principal, day):
-  return getDailyInterestRate(day) * principal
+def getDailyInterestRate(day):
+  daysInCurrentYear = (datetime.date(day.year, 12, 31) - datetime.date(day.year, 1, 1)).days + 1
+  return fetchInterestRate(day) / daysInCurrentYear
+
+
+def getMonthlyInterestRate(day):
+  return fetchInterestRate(day) / 12.
+
+
+def isEndOfCompoundingPeriod(day):
+  return day.day == 1
+
+
+def getInterestForPrincipal(principal, day):
+  return getMonthlyInterestRate(day) * principal
 
 
 def main():
@@ -100,10 +101,10 @@ def main():
   previousClose  = 0.0
 
   for day in daterange(START_DATE, END_DATE):
-    principal += addPrincipalForDay(day)
-    openInterest += addInterestForPrincipal(principal + closedInterest, day)
+    principal += fetchPrincipalForDay(day)
 
     if isEndOfCompoundingPeriod(day):
+      openInterest += getInterestForPrincipal(principal + closedInterest, day)
       closedInterest += openInterest
       openInterest = 0
 
