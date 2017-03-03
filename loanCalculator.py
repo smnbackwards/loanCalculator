@@ -79,8 +79,8 @@ def getDailyInterestRate(day):
 
 
 def isEndOfCompoundingPeriod(day):
-  import pdb; pdb.set_trace()
-  return False
+  return day.month == 1 and day.day == 1
+
 
 def addPrincipalForDay(day):
   for loan in LOANS:
