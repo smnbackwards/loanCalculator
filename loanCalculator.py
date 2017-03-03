@@ -35,7 +35,7 @@ LOANS = [
 
 # Notified this is the amount I owe
 CHECKSUMS = [
-  { "date": datetime.date(2017, 02, 28), "value": 40606.03 },
+  { "date": datetime.date(2017,  2, 28), "value": 40606.03 },
 ]
 
 PAYMENTS = [
